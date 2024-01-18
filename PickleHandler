@@ -1,3 +1,4 @@
+# @title Load and Handle Data
 
 import pickle
 import os
@@ -7,12 +8,23 @@ class PickleHandler:
     def __init__(self, folder_path, file_name, none_on_error:bool = True):
         self.folder_path = folder_path
         self.file_path = os.path.join(self.folder_path, file_name)
-        self.file_log_path = os.path.join(self.folder_path, f'''{file_name.replace('.','_')}.log''')
+        self.file_log_path = os.path.join(self.folder_path, f'''log_{file_name.replace('.','_')}.log''')
         self._error_return_None = none_on_error
         
         # Configure logging
-        self.file_logger = logging
-        self.file_logger.basicConfig(filename=self.file_log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        # Create instance-specific logger
+        self.file_logger = logging.getLogger(f'PickleHandler_{file_name}')
+        self.file_logger.setLevel(logging.INFO)
+        
+        # Create a file handler
+        file_handler = logging.FileHandler(self.file_log_path)
+
+        # Create a formatter and set the formatter for the handler
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        file_handler.setFormatter(formatter)
+
+        # Add the handler to the logger
+        self.file_logger.addHandler(file_handler)
 
     def save(self, data):
         with open(self.file_path, 'wb') as file:
@@ -42,7 +54,7 @@ class PickleHandler:
 
     def load_logs(self):
         if not os.path.exists(self.file_log_path):
-            print(f'Log file not found at {log_file_path}.')
+            print(f'Log file not found at {self.file_log_path}.')
             return []
     
         with open(self.file_log_path, 'r') as file:
