@@ -35,17 +35,18 @@ class PickleHandler:
 
         self.file_logger.addHandler(file_handler)
 
-    def save(self, data):
+    def save(self, data, comment):
         """
         Save data to the specified file.
 
         Args:
             data: The data to be saved.
+            comment: The comment to be added.
         """
         with open(self.file_path, 'wb') as file:
             pickle.dump(data, file)
         print(f'Data saved to {self.file_path}')
-        self.file_logger.info(f'Data saved to {self.file_path}')
+        self.file_logger.info(f'Data saved to {self.file_path}: {comment}')
 
     def load(self):
         """
