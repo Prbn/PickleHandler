@@ -19,6 +19,9 @@ class PickleHandler:
         self.file_log_path = os.path.join(self.folder_path, f'''log_{file_name.replace('.','_')}.log''')
         self._error_return_None = none_on_error
 
+        # Ensure directory
+        self._ensure_dir(self.folder_path)
+
         # Configure logging
         self.file_logger = logging.getLogger(f'PickleHandler_{file_name}')
         self._configure_logger()
@@ -35,18 +38,28 @@ class PickleHandler:
 
         self.file_logger.addHandler(file_handler)
 
-    def save(self, data, comment):
+    def _ensure_dir(self, directory):
+        """
+        Ensure the directory exists, creating it if necessary.
+        
+        Args:
+        directory (str): Path to the directory.
+        """
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+
+    def save(self, data):
         """
         Save data to the specified file.
 
         Args:
             data: The data to be saved.
-            comment: The comment to be added.
         """
         with open(self.file_path, 'wb') as file:
             pickle.dump(data, file)
         print(f'Data saved to {self.file_path}')
-        self.file_logger.info(f'Data saved to {self.file_path}: {comment}')
+        self.file_logger.info(f'Data saved to {self.file_path}')
 
     def load(self):
         """
