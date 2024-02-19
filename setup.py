@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
-    install_requires=['pickle4', 'logging'],
+    install_requires=['pickle4'],
     keywords=['python', 'pickle', 'pickle4', 'save', 'load', 'logging'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
