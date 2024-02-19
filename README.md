@@ -13,6 +13,8 @@ pip install PickleHandler
 ## Usage
 Here's a simple example demonstrating how to use PickleHandler:
 
+<a href="https://colab.research.google.com/drive/1l_2Xo7o26cUt6nU698z8KUCmirFD7S4P" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 ```bash
 from PickleHandler import PickleHandler
 
@@ -30,6 +32,7 @@ print(loaded_data)
 
 ## Contributing
 Contributions are welcome! If you find a bug or have an idea for an improvement, please open an issue or submit a pull request on [GitHub](https://github.com/Prbn/PickleHandler).
+
 Github: https://github.com/Prbn/PickleHandler
 
 ## License
