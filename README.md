@@ -23,7 +23,7 @@ handler = PickleHandler(folder_path="data", file_name="example.pkl")
 
 # Save data
 data = {"key": "value"}
-handler.save(data)
+handler.save(data, comment="Data saved 1")
 
 # Load data
 loaded_data = handler.load()
