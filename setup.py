@@ -7,8 +7,10 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
+# with open(os.path.join(here, "README.md")) as f1:
+#     description_1 = f1.read()
 
-VERSION = '1.0.0'
+VERSION = '1.0.10'
 DESCRIPTION = 'A utility for saving and loading data using pickle with logging functionality.'
 
 setup(
@@ -16,18 +18,25 @@ setup(
     version=VERSION,
     author="PRBN",
     author_email="<career.prabin@gmail.com>",
+    url = 'https://github.com/Prbn/PickleHandler',
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
     install_requires=[],
+    # entry_points = {"consloe_scripts": ['PickleHandler = PickleHandler:PickleHandler']},
     keywords=['python', 'pickle', 'save', 'load', 'logging'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Creative Commons Attribution-ShareAlike 4.0 International License",
+        "License :: OSI Approved :: MIT License",
+        # "License :: OSI Approved :: Creative Commons Attribution-ShareAlike 4.0 International License",
         "Operating System :: OS Independent",
     ]
 )
 
+# python setup.py sdist bdist_wheel
+# python3.10 -m pip install dist\PickleHandler-1.0.4-py3-none-any.whl --force-reinstall
+# python -m twine upload dist/* -p pypi-AgE-PRS-IcHlwaS5vcmcCJDNb6YQ --verbose
+# python -m twine upload -r testpypi dist/* -p pypi-AgE-PRS-NdGVzdC5weXBpLm9yZwIkYnR01hE-dO0FIZkTIv8YZY0DlJ_dpt0 --verbose
