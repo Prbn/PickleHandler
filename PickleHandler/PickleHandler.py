@@ -17,10 +17,23 @@ class PickleHandler:
         self.file_log_path = os.path.join(self.folder_path, f'''log_{file_name.replace('.','_')}.log''')
         self._error_return_None = none_on_error
 
+        # Ensure the directory Exists
+        self._ensure_dir(self.folder_path)
+
         # Configure logging
         self.file_logger = None
         self.file_logger = logging.getLogger(f'PickleHandler_{file_name}')
         self._configure_logger()
+    
+    def _ensure_dir(self, directory):
+        """
+        Ensure the directory exists, creating it if necessary.
+        
+        Args:
+        directory (str): Path to the directory.
+        """
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         
     def _configure_logger(self):
         """
