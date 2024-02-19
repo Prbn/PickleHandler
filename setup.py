@@ -10,7 +10,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
 # with open(os.path.join(here, "README.md")) as f1:
 #     description_1 = f1.read()
 
-VERSION = '1.0.10'
+VERSION = '1.0.11'
 DESCRIPTION = 'A utility for saving and loading data using pickle with logging functionality.'
 
 setup(
